@@ -52,9 +52,7 @@ class(data.imputed$ximp)
 
 # Make "train" and "test" datasets from imputed data
 train.imputed<- data.imputed$ximp[c(1:3700), ]
-train.imputed<- train.imputed[, c(-4)]
 test.imputed<- data.imputed$ximp[c(3701:3900),]
-test.imputed<- test.imputed[, c(-4)]
 row.names(test.imputed)<- c(1:200)
 
 
@@ -75,4 +73,4 @@ varImpPlot(rf_train, sort = TRUE, n.var = 10)
 test.imputed$prediction<- predict(rf_train, test.imputed[,c(-22)])
 summary(test.imputed$prediction)
 table(test.imputed$classlabel, test.imputed$prediction )
-rf_train$confusion[, 'class.error']
+rf_train$confusion
